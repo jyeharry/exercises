@@ -1,0 +1,8 @@
+map({
+  name: .name,
+	body_part: (.primaryMuscles[0] | split("") | first |= ascii_upcase | add),
+	equipment: (if .equipment then .equipment | split("") | first |= ascii_upcase | add else null end),
+	target: (.primaryMuscles[0] | split("") | first |= ascii_upcase | add),
+	secondary_muscles: (.secondaryMuscles | map(. | split("") | first |= ascii_upcase | add)),
+	instructions: .instructions
+})
